@@ -495,6 +495,192 @@ body {
         transform: scale(1);
     }
 }
+/* =================================
+   QURAN QUOTE - IMPROVED STYLES
+================================= */
+.quran-quote {
+    margin-top: 40px; /* Sedikit lebih banyak ruang di atas */
+    margin-bottom: 50px; /* Sedikit lebih banyak ruang di bawah */
+    padding: 30px; /* Perbesar padding */
+    background: linear-gradient(to bottom right, var(--gold-light), var(--cream)); /* Gradasi warna */
+    border-radius: 15px; /* Sudut lebih membulat */
+    max-width: 750px; /* Perlebar sedikit */
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Bayangan lebih menonjol */
+    position: relative; /* Untuk ornamen */
+    overflow: hidden; /* Memastikan ornamen tidak keluar */
+}
+
+.quran-quote::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 100px;
+    height: 100px;
+    background: rgba(212, 175, 55, 0.1); /* Warna emas transparan */
+    border-radius: 50%;
+    z-index: 0;
+    filter: blur(15px); /* Efek blur */
+}
+
+.quran-quote::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 120px;
+    height: 120px;
+    background: rgba(212, 175, 55, 0.15); /* Warna emas transparan */
+    border-radius: 50%;
+    z-index: 0;
+    filter: blur(20px); /* Efek blur */
+}
+
+.quran-quote .arabic-text {
+    font-family: 'Traditional Arabic', serif;
+    font-size: 30px; /* Perbesar ukuran font Arab */
+    line-height: 2.5; /* Perlebar jarak antar baris */
+    color: var(--brown);
+    margin-bottom: 20px; /* Perbesar margin bawah */
+    direction: rtl;
+    text-align: center;
+    position: relative; /* Untuk z-index */
+    z-index: 1;
+    font-weight: 500; /* Sedikit lebih tebal */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05); /* Bayangan teks halus */
+}
+
+.quran-quote .latin-text {
+    font-family: var(--font-heading);
+    font-size: 18px; /* Perbesar ukuran font Latin */
+    color: var(--gold-dark);
+    margin-bottom: 15px; /* Perbesar margin bawah */
+    font-weight: 700; /* Lebih tebal */
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.5px; /* Tambah jarak antar huruf */
+}
+
+.quran-quote .translation-text {
+    font-size: 15px; /* Sedikit perbesar ukuran font terjemahan */
+    color: var(--grey);
+    line-height: 1.9; /* Perlebar jarak antar baris */
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+    padding: 0 10px; /* Tambah padding horizontal */
+}
+
+/* Responsive adjustments for Quran Quote */
+@media (max-width: 768px) {
+    .quran-quote {
+        padding: 25px;
+        margin-top: 30px;
+        margin-bottom: 40px;
+    }
+    .quran-quote .arabic-text {
+        font-size: 26px;
+        line-height: 2.2;
+    }
+    .quran-quote .latin-text {
+        font-size: 16px;
+    }
+    .quran-quote .translation-text {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .quran-quote {
+        padding: 20px;
+        margin-top: 25px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+    }
+    .quran-quote .arabic-text {
+        font-size: 22px;
+        line-height: 2;
+        margin-bottom: 15px;
+    }
+    .quran-quote .latin-text {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .quran-quote .translation-text {
+        font-size: 12px;
+        line-height: 1.8;
+        padding: 0;
+    }
+    .quran-quote::before,
+    .quran-quote::after {
+        display: none; /* Sembunyikan ornamen pada layar sangat kecil */
+    }
+}
+
+
+.quran-quote .arabic-text {
+    font-family: 'Traditional Arabic', serif; /* Font yang cocok untuk teks Arab */
+    font-size: 24px;
+    line-height: 2.2;
+    color: var(--brown);
+    margin-bottom: 15px;
+    direction: rtl; /* Right-to-left for Arabic text */
+    text-align: center;
+}
+
+.quran-quote .latin-text {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    color: var(--gold-dark);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.quran-quote .translation-text {
+    font-size: 14px;
+    color: var(--grey);
+    line-height: 1.8;
+    font-style: italic;
+}
+
+/* Responsive adjustments for Quran Quote */
+@media (max-width: 768px) {
+    .quran-quote {
+        padding: 15px;
+        margin-top: 25px;
+        margin-bottom: 30px;
+    }
+    .quran-quote .arabic-text {
+        font-size: 20px;
+        line-height: 2;
+    }
+    .quran-quote .latin-text {
+        font-size: 14px;
+    }
+    .quran-quote .translation-text {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .quran-quote {
+        padding: 10px;
+        margin-top: 20px;
+        margin-bottom: 25px;
+    }
+    .quran-quote .arabic-text {
+        font-size: 18px;
+        line-height: 1.8;
+    }
+    .quran-quote .latin-text {
+        font-size: 12px;
+    }
+    .quran-quote .translation-text {
+        font-size: 11px;
+    }
+}
 
 /* =================================
    SECTION CERITA KAMI
@@ -1456,7 +1642,12 @@ body {
                 <div class="section-divider"></div>
                 <p class="section-subtitle">Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara pernikahan kami</p>
             </div>
-
+                <!-- Tambahan Ayat Al-Qur'an -->
+            <div class="quran-quote" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+                    <p class="arabic-text">وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةًۗ اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ</p>
+                    <p class="latin-text">QS. Ar-Rum: Ayat 21 (Juz 21)</p>
+                    <p class="translation-text">"Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."</p>
+            </div>
             <div class="mempelai-container">
                 <!-- Mempelai Pria -->
                 <div class="mempelai-card" data-aos="fade-right" data-aos-delay="100" data-aos-duration="800">
@@ -1466,7 +1657,7 @@ body {
                     <h3 class="mempelai-name">M.Fakhroni Hamzah, M.Pd</h3>
                     <p class="mempelai-desc">Putra pertama dari</p>
                     <p class="mempelai-parents">Bapak Abd.Hadi, S.Pd<br>& Ibu Rizqiyah</p>
-                    <a href="https://instagram.com" class="social-link" target="_blank">
+                    <a href="https://www.instagram.com/fakhroni_hamzah?igsh=MWdjcXRpZjJnOGtjbQ==" class="social-link" target="_blank">
                         <i class="fab fa-instagram"></i> @fakhroni_hamzah
                     </a>
                 </div>
@@ -1484,7 +1675,7 @@ body {
                     <h3 class="mempelai-name">Putri Fahmadia Dinda MT, M.Pd</h3>
                     <p class="mempelai-desc">Putri pertama dari</p>
                     <p class="mempelai-parents">Bapak H.Mohamad Thohir, S.E<br>& Ibu Hj.Cici Wahyuni</p>
-                    <a href="https://instagram.com" class="social-link" target="_blank">
+                    <a href="https://www.instagram.com/pupiifd_?igsh=MXhxdWpidDA4c3Vkbg==" class="social-link" target="_blank">
                         <i class="fab fa-instagram"></i> @pupiifd_
                     </a>
                 </div>
@@ -1504,21 +1695,21 @@ body {
             <div class="cerita-content">
                 <div class="cerita-item" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
                     <div class="cerita-card">
-                        <p class="cerita-date">2020</p>
+                        <p class="cerita-date">2022</p>
                         <h3 class="cerita-title-card">Awal Pertemuan</h3>
                         <p class="cerita-description">Kami pertama kali bertemu di kampus, di tengah hiruk pikuk kegiatan organisasi. Sebuah pandangan pertama yang sederhana, namun meninggalkan kesan mendalam.</p>
                     </div>
                 </div>
                 <div class="cerita-item" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
                     <div class="cerita-card">
-                        <p class="cerita-date">2021</p>
+                        <p class="cerita-date">2023</p>
                         <h3 class="cerita-title-card">Mulai Menjalin Kasih</h3>
                         <p class="cerita-description">Dari pertemanan, benih-benih cinta mulai tumbuh. Kami memutuskan untuk menjalin hubungan yang serius, saling mendukung dalam suka dan duka.</p>
                     </div>
                 </div>
                 <div class="cerita-item" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
                     <div class="cerita-card">
-                        <p class="cerita-date">2023</p>
+                        <p class="cerita-date">2024</p>
                         <h3 class="cerita-title-card">Lamaran</h3>
                         <p class="cerita-description">Setelah melewati berbagai rintangan, kami memutuskan untuk melangkah ke jenjang yang lebih serius. Sebuah lamaran sederhana, namun penuh makna dan janji.</p>
                     </div>
@@ -1538,9 +1729,7 @@ body {
     <section id="galeri" class="galeri">
         <div class="container">
             <div class="section-header" data-aos="fade-up" data-aos-duration="800">
-                <h2 class="section-title">Galeri Foto</h2>
                 <div class="section-divider"></div>
-                <p class="section-subtitle">Beberapa momen indah perjalanan cinta kami.</p>
             </div>
 
             <div class="galeri-grid">
@@ -1687,7 +1876,7 @@ body {
                     <div class="gift-details">
                         <p class="bank-name">Bank BCA</p>
                         <p class="account-number">1234567890</p>
-                        <p class="account-name">a.n. Budi Santoso</p>
+                        <p class="account-name">a.n. Raihan Fahrel Akbar</p>
                         <button class="btn-copy" data-copy="1234567890">
                             <i class="fas fa-copy"></i> Salin No. Rekening
                         </button>
