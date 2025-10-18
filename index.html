@@ -59,6 +59,166 @@ body {
 }
 
 /* =================================
+   LOGIN PAGE
+================================= */
+.login-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&h=1080&fit=crop') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.login-page.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    animation: slideUp 0.8s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.login-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 25px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: var(--white);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+.login-title {
+    font-family: var(--font-script);
+    font-size: 48px;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+.login-subtitle {
+    font-size: 16px;
+    color: var(--grey);
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+.login-form {
+    margin-bottom: 20px;
+}
+
+.login-input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.login-input-group input {
+    width: 100%;
+    padding: 15px 20px;
+    padding-left: 50px;
+    border: 2px solid var(--gold-light);
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background: var(--white);
+}
+
+.login-input-group input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+}
+
+.login-input-group i {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold);
+    font-size: 18px;
+}
+
+.login-input-group .error-text {
+    display: none;
+    color: #e74c3c;
+    font-size: 13px;
+    text-align: left;
+    margin-top: 5px;
+    padding-left: 20px;
+}
+
+.login-input-group.error input {
+    border-color: #e74c3c;
+}
+
+.login-input-group.error .error-text {
+    display: block;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+}
+
+.btn-login:active {
+    transform: translateY(0);
+}
+
+.login-footer {
+    font-size: 13px;
+    color: var(--grey);
+    margin-top: 20px;
+}
+
+/* =================================
    WELCOME OVERLAY
 ================================= */
 .welcome-overlay {
@@ -76,9 +236,14 @@ body {
     color: var(--white);
     text-align: center;
     z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.welcome-overlay.show {
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
 .welcome-overlay.hidden {
@@ -110,7 +275,7 @@ body {
     font-size: 28px;
     color: var(--gold-light);
     margin-bottom: 30px;
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 /* =================================
@@ -495,21 +660,19 @@ body {
         transform: scale(1);
     }
 }
-/* =================================
-   QURAN QUOTE - IMPROVED STYLES
-================================= */
+
 .quran-quote {
-    margin-top: 40px; /* Sedikit lebih banyak ruang di atas */
-    margin-bottom: 50px; /* Sedikit lebih banyak ruang di bawah */
-    padding: 30px; /* Perbesar padding */
-    background: linear-gradient(to bottom right, var(--gold-light), var(--cream)); /* Gradasi warna */
-    border-radius: 15px; /* Sudut lebih membulat */
-    max-width: 750px; /* Perlebar sedikit */
+    margin-top: 40px;
+    margin-bottom: 50px;
+    padding: 30px;
+    background: linear-gradient(to bottom right, var(--gold-light), var(--cream));
+    border-radius: 15px;
+    max-width: 750px;
     margin-left: auto;
     margin-right: auto;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Bayangan lebih menonjol */
-    position: relative; /* Untuk ornamen */
-    overflow: hidden; /* Memastikan ornamen tidak keluar */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
 }
 
 .quran-quote::before {
@@ -519,10 +682,10 @@ body {
     left: -20px;
     width: 100px;
     height: 100px;
-    background: rgba(212, 175, 55, 0.1); /* Warna emas transparan */
+    background: rgba(212, 175, 55, 0.1);
     border-radius: 50%;
     z-index: 0;
-    filter: blur(15px); /* Efek blur */
+    filter: blur(15px);
 }
 
 .quran-quote::after {
@@ -532,45 +695,45 @@ body {
     right: -20px;
     width: 120px;
     height: 120px;
-    background: rgba(212, 175, 55, 0.15); /* Warna emas transparan */
+    background: rgba(212, 175, 55, 0.15);
     border-radius: 50%;
     z-index: 0;
-    filter: blur(20px); /* Efek blur */
+    filter: blur(20px);
 }
 
 .quran-quote .arabic-text {
     font-family: 'Traditional Arabic', serif;
-    font-size: 30px; /* Perbesar ukuran font Arab */
-    line-height: 2.5; /* Perlebar jarak antar baris */
+    font-size: 30px;
+    line-height: 2.5;
     color: var(--brown);
-    margin-bottom: 20px; /* Perbesar margin bawah */
+    margin-bottom: 20px;
     direction: rtl;
     text-align: center;
-    position: relative; /* Untuk z-index */
+    position: relative;
     z-index: 1;
-    font-weight: 500; /* Sedikit lebih tebal */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05); /* Bayangan teks halus */
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .quran-quote .latin-text {
     font-family: var(--font-heading);
-    font-size: 18px; /* Perbesar ukuran font Latin */
+    font-size: 18px;
     color: var(--gold-dark);
-    margin-bottom: 15px; /* Perbesar margin bawah */
-    font-weight: 700; /* Lebih tebal */
+    margin-bottom: 15px;
+    font-weight: 700;
     position: relative;
     z-index: 1;
-    letter-spacing: 0.5px; /* Tambah jarak antar huruf */
+    letter-spacing: 0.5px;
 }
 
 .quran-quote .translation-text {
-    font-size: 15px; /* Sedikit perbesar ukuran font terjemahan */
+    font-size: 15px;
     color: var(--grey);
-    line-height: 1.9; /* Perlebar jarak antar baris */
+    line-height: 1.9;
     font-style: italic;
     position: relative;
     z-index: 1;
-    padding: 0 10px; /* Tambah padding horizontal */
+    padding: 0 10px;
 }
 
 /* Responsive adjustments for Quran Quote */
@@ -938,13 +1101,6 @@ body {
     width: 18px;
 }
 
-.acara-address {
-    color: var(--grey);
-    font-size: 13px;
-    margin-top: 5px;
-    padding-left: 28px;
-}
-
 .map-container {
     text-align: center;
 }
@@ -1076,118 +1232,6 @@ body {
 }
 
 /* =================================
-   SECTION GIFT
-================================= */
-.gift {
-    padding: var(--section-padding);
-    background: var(--cream);
-}
-
-.gift-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 35px;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.gift-card {
-    background: var(--white);
-    padding: 35px 25px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.gift-card:hover {
-    transform: translateY(-5px);
-}
-
-.gift-icon {
-    width: 70px;
-    height: 70px;
-    margin: 0 auto 18px;
-    background: var(--gold-light);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    color: var(--gold-dark);
-}
-
-.gift-title {
-    font-family: var(--font-heading);
-    font-size: 22px;
-    color: var(--brown);
-    margin-bottom: 20px;
-}
-
-.gift-details {
-    color: var(--black);
-}
-
-.bank-name {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--gold-dark);
-    margin-bottom: 12px;
-}
-
-.account-number {
-    font-size: 22px;
-    font-weight: bold;
-    color: var(--brown);
-    margin-bottom: 8px;
-    letter-spacing: 2px;
-}
-
-.account-name {
-    font-size: 13px;
-    color: var(--grey);
-    margin-bottom: 18px;
-}
-
-.btn-copy {
-    padding: 10px 25px;
-    background: var(--gold);
-    color: var(--white);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.btn-copy:hover {
-    background: var(--gold-dark);
-    transform: scale(1.05);
-}
-
-.qris-container {
-    width: 180px;
-    height: 180px;
-    margin: 0 auto 18px;
-    padding: 12px;
-    background: var(--white);
-    border: 3px solid var(--gold);
-    border-radius: 8px;
-}
-
-.qris-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.qris-note {
-    font-size: 13px;
-    color: var(--grey);
-}
-
-/* =================================
    FOOTER
 ================================= */
 .footer {
@@ -1210,32 +1254,6 @@ body {
     margin-bottom: 22px;
 }
 
-.footer-social {
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-    margin-bottom: 25px;
-}
-
-.footer-social a {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: var(--gold);
-    color: var(--white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.footer-social a:hover {
-    background: var(--white);
-    color: var(--gold);
-    transform: translateY(-3px);
-}
-
 .footer-copyright {
     font-size: 13px;
     opacity: 0.8;
@@ -1250,6 +1268,14 @@ body {
 @media (max-width: 768px) {
     :root {
         --section-padding: 60px 0;
+    }
+    
+    .login-container {
+        padding: 40px 30px;
+    }
+    
+    .login-title {
+        font-size: 40px;
     }
     
     .hero-title {
@@ -1352,7 +1378,6 @@ body {
         transform: translateX(0);
     }
 }
-
 /* =================================
    RESPONSIVE DESIGN - MOBILE
 ================================= */
@@ -1361,9 +1386,20 @@ body {
         --section-padding: 50px 0;
     }
     
-    .container {
-        padding: 0 15px;
+    .login-container {
+        padding: 35px 25px;
     }
+    
+    .login-title {
+        font-size: 36px;
+    }
+    
+    .login-subtitle {
+        font-size: 14px;
+    }
+     .container {
+        padding: 0 15px;
+    }   
     
     .hero-title {
         font-size: 45px;
@@ -1583,6 +1619,34 @@ body {
         <source src="Tiara Andini, Arsy Widianto - Lagu Pernikahan Kita (Official Music Video) - TiaraAndiniVEVO.mp3" type="audio/mpeg">
     </audio>
 
+    <!-- Login Page -->
+    <div id="loginPage" class="login-page">
+        <div class="login-container">
+            <div class="login-icon">
+                <i class="fas fa-envelope-open-text"></i>
+            </div>
+            <h1 class="login-title">Roni & Pupy</h1>
+            <p class="login-subtitle">Selamat datang! Silakan masukkan nama Anda untuk membuka undangan pernikahan kami</p>
+            
+            <form id="loginForm" class="login-form">
+                <div class="login-input-group" id="nameInputGroup">
+                    <i class="fas fa-user"></i>
+                    <input 
+                        type="text" 
+                        id="guestNameInput" 
+                        placeholder="Masukkan nama Anda..." 
+                        autocomplete="off"
+                    >
+                    <span class="error-text">Nama minimal 3 karakter</span>
+                </div>
+                
+                <button type="submit" class="btn-login">Buka Undangan</button>
+            </form>
+            
+            <p class="login-footer">💍 The Wedding of Roni & Pupy 💍</p>
+        </div>
+    </div>
+
     <!-- Welcome Overlay -->
     <div id="welcomeOverlay" class="welcome-overlay">
         <div class="welcome-content">
@@ -1606,10 +1670,9 @@ body {
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#mempelai" class="nav-link">Mempelai</a></li>
-                <li><a href="#cerita" class="nav-link">Cerita Kami</a></li> <!-- New Nav Link -->
+                <li><a href="#cerita" class="nav-link">Cerita Kami</a></li>
                 <li><a href="#acara" class="nav-link">Acara</a></li>
                 <li><a href="#rsvp" class="nav-link">RSVP</a></li>
-                <li><a href="#gift" class="nav-link">Gift</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -1627,7 +1690,7 @@ body {
             <h1 class="hero-title">Roni & Pupy</h1>
             <div class="hero-divider"></div>
             <p class="hero-date">06 • 11 • 2025</p>
-            <a href="#mempelai" class="btn-primary">Lihat Detail Acara</a> <!-- Changed text -->
+            <a href="#mempelai" class="btn-primary">Lihat Detail Acara</a>
         </div>
         <div class="scroll-indicator">
             <i class="fas fa-chevron-down"></i>
@@ -1642,14 +1705,14 @@ body {
                 <div class="section-divider"></div>
                 <p class="section-subtitle">Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara pernikahan kami</p>
             </div>
-                <!-- Tambahan Ayat Al-Qur'an -->
+            
             <div class="quran-quote" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-                    <p class="arabic-text">وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةًۗ اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ</p>
-                    <p class="latin-text">QS. Ar-Rum: Ayat 21 (Juz 21)</p>
-                    <p class="translation-text">"Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."</p>
+                <p class="arabic-text">وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةًۗ اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ</p>
+                <p class="latin-text">QS. Ar-Rum: Ayat 21 (Juz 21)</p>
+                <p class="translation-text">"Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."</p>
             </div>
+            
             <div class="mempelai-container">
-                <!-- Mempelai Pria -->
                 <div class="mempelai-card" data-aos="fade-right" data-aos-delay="100" data-aos-duration="800">
                     <div class="mempelai-image">
                         <img src="Untitled-1.jpg" alt="Mempelai Pria" loading="lazy">
@@ -1657,17 +1720,15 @@ body {
                     <h3 class="mempelai-name">M.Fakhroni Hamzah, M.Pd</h3>
                     <p class="mempelai-desc">Putra pertama dari</p>
                     <p class="mempelai-parents">Bapak Abd.Hadi, S.Pd<br>& Ibu Rizqiyah</p>
-                    <a href="https://www.instagram.com/fakhroni_hamzah?igsh=MWdjcXRpZjJnOGtjbQ==" class="social-link" target="_blank">
+                    <a href="https://www.instagram.com/fakhroni_hamzah" class="social-link" target="_blank">
                         <i class="fab fa-instagram"></i> @fakhroni_hamzah
                     </a>
                 </div>
 
-                <!-- Ornamen Tengah -->
                 <div class="mempelai-ornament" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800">
                     <i class="fas fa-heart"></i>
                 </div>
 
-                <!-- Mempelai Wanita -->
                 <div class="mempelai-card" data-aos="fade-left" data-aos-delay="100" data-aos-duration="800">
                     <div class="mempelai-image">
                         <img src="Gemini_Generated_Image_1n4nrf1n4nrf1n4n.png" alt="Mempelai Wanita" loading="lazy">
@@ -1675,7 +1736,7 @@ body {
                     <h3 class="mempelai-name">Putri Fahmadia Dinda MT, M.Pd</h3>
                     <p class="mempelai-desc">Putri pertama dari</p>
                     <p class="mempelai-parents">Bapak H.Mohamad Thohir, S.E<br>& Ibu Hj.Cici Wahyuni</p>
-                    <a href="https://www.instagram.com/pupiifd_?igsh=MXhxdWpidDA4c3Vkbg==" class="social-link" target="_blank">
+                    <a href="https://www.instagram.com/pupiifd_" class="social-link" target="_blank">
                         <i class="fab fa-instagram"></i> @pupiifd_
                     </a>
                 </div>
@@ -1734,7 +1795,7 @@ body {
 
             <div class="galeri-grid">
                 <div class="galeri-item" data-aos="zoom-in" data-aos-delay="50" data-aos-duration="600">
-                    <img src="ChatGPT Image Sep 29, 2025, 02_00_35 PM.png" alt="Gallery 1" loading="lazy">
+                    <img src="PMT05237.JPG" alt="Gallery 1" loading="lazy">
                     <div class="galeri-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
@@ -1770,7 +1831,6 @@ body {
             </div>
 
             <div class="acara-container">
-                <!-- Akad Nikah -->
                 <div class="acara-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
                     <div class="acara-icon">
                         <i class="fas fa-ring"></i>
@@ -1783,7 +1843,6 @@ body {
                     </div>
                 </div>
 
-                <!-- Resepsi -->
                 <div class="acara-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
                     <div class="acara-icon">
                         <i class="fas fa-glass-cheers"></i>
@@ -1797,12 +1856,17 @@ body {
                 </div>
             </div>
 
-            <!-- Google Maps -->
             <div class="map-container" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
                 <h3 class="map-title">Lokasi Acara</h3>
                 <div class="map-wrapper">
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3948.6056189503465!2d113.24856207500983!3d-8.242351991790848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOMKwMTQnMzIuNSJTIDExM8KwMTUnMDQuMSJF!5e0!3m2!1sen!2sid!4v1759127715584!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3948.6056189503465!2d113.24856207500983!3d-8.242351991790848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOMKwMTQnMzIuNSJTIDExM8KwMTUnMDQuMSJF!5e0!3m2!1sen!2sid!4v1759127715584!5m2!1sen!2sid" 
+                        width="600" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
                 </div>
                 <a href="https://goo.gl/maps/SNp9KikgwLPVoJr27" target="_blank" class="btn-primary">Buka di Google Maps</a>
             </div>
@@ -1884,7 +1948,7 @@ body {
     
     <!-- Custom JavaScript -->
     <script>
-// Initialize AOS with mobile-optimized settings
+// Initialize AOS
 AOS.init({
     duration: 800,
     once: true,
@@ -1892,43 +1956,69 @@ AOS.init({
     easing: 'ease-out'
 });
 
-// Welcome Overlay Logic
+// Variables
+const loginPage = document.getElementById('loginPage');
+const loginForm = document.getElementById('loginForm');
+const guestNameInput = document.getElementById('guestNameInput');
+const nameInputGroup = document.getElementById('nameInputGroup');
 const welcomeOverlay = document.getElementById('welcomeOverlay');
 const openInvitationBtn = document.getElementById('openInvitationBtn');
 const guestNameElement = document.getElementById('guestName');
 const bgMusic = document.getElementById('bgMusic');
 const musicToggle = document.getElementById('musicToggle');
 let isPlaying = false;
+let guestName = '';
 
-// Function to get guest name from URL parameter
-function getGuestNameFromUrl() {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('to') || 'Bapak/Ibu/Saudara/i'; // Default if no 'to' parameter
-}
+// Initially hide scrollbar
+document.body.style.overflow = 'hidden';
 
-// Set guest name
-guestNameElement.textContent = getGuestNameFromUrl();
-
-openInvitationBtn.addEventListener('click', () => {
-    welcomeOverlay.classList.add('hidden');
-    document.body.style.overflow = 'auto'; // Enable scrolling
+// Login Form Submit
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
     
-    // Play music when invitation is opened
+    const name = guestNameInput.value.trim();
+    
+    if (name.length < 3) {
+        nameInputGroup.classList.add('error');
+        return;
+    }
+    
+    nameInputGroup.classList.remove('error');
+    guestName = name;
+    
+    // Hide login page and show welcome overlay
+    loginPage.classList.add('hidden');
+    welcomeOverlay.classList.add('show');
+    
+    // Set guest name in welcome overlay
+    guestNameElement.textContent = guestName;
+});
+
+// Remove error on input
+guestNameInput.addEventListener('input', () => {
+    if (guestNameInput.value.trim().length >= 3) {
+        nameInputGroup.classList.remove('error');
+    }
+});
+
+// Open Invitation Button
+openInvitationBtn.addEventListener('click', () => {
+    welcomeOverlay.classList.remove('show');
+    welcomeOverlay.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+    
+    // Play music
     bgMusic.play().then(() => {
         isPlaying = true;
         musicToggle.classList.remove('paused');
         musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
     }).catch(error => {
         console.error("Autoplay prevented:", error);
-        // If autoplay is prevented, keep music paused state
         isPlaying = false;
         musicToggle.classList.add('paused');
         musicToggle.innerHTML = '<i class="fas fa-music"></i>';
     });
 });
-
-// Initially hide scrollbar
-document.body.style.overflow = 'hidden';
 
 // Sticky Navigation
 const navbar = document.getElementById('navbar');
@@ -2013,7 +2103,7 @@ musicToggle.addEventListener('click', () => {
         musicToggle.innerHTML = '<i class="fas fa-music"></i>';
         isPlaying = false;
     } else {
-        bgMusic.play().catch(() => {}); // Catch potential autoplay errors
+        bgMusic.play().catch(() => {});
         musicToggle.classList.remove('paused');
         musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
         isPlaying = true;
@@ -2071,12 +2161,10 @@ lightbox.addEventListener('touchend', (e) => {
 
 function handleSwipe() {
     if (touchStartX - touchEndX > 50) {
-        // Swipe left - next image
         currentImageIndex = (currentImageIndex + 1) % galeriItems.length;
         openLightbox(currentImageIndex);
     }
     if (touchEndX - touchStartX > 50) {
-        // Swipe right - previous image
         currentImageIndex = (currentImageIndex - 1 + galeriItems.length) % galeriItems.length;
         openLightbox(currentImageIndex);
     }
@@ -2219,7 +2307,6 @@ copyButtons.forEach(button => {
         });
     });
 });
-
 // Console Message
 console.log('%c💍 Undangan Pernikahan Roni & Pupy', 'color: #D4AF37; font-size: 18px; font-weight: bold;');
 console.log('%cTerima kasih telah mengunjungi undangan kami! 💕', 'color: #6B4423; font-size: 14px;');
